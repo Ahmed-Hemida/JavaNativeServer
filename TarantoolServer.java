@@ -13,6 +13,7 @@ public class TarantoolServer {
     public static void main(String[] args) throws Exception {
         HttpServer server = HttpServer.create(new InetSocketAddress(8081), 0);
         server.createContext("/user/create", new createUserHandler());
+        server.createContext("/user/password/reset", new verifyUserHandler());
         server.createContext("/user/verify", new verifyUserHandler());
         server.createContext("/user/device", new registerDeviceHandler());
         server.createContext("/user/signin", new authenticateHandler());
